@@ -1,0 +1,1 @@
+ADD_SUBDIRECTORY(tpk_manifest_handlers)
