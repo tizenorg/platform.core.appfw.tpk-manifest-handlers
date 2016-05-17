@@ -29,7 +29,6 @@ Summary:    Manifest parser development files
 Group:      Application Framework/Package Management
 Requires:   %{name} = %{version}
 Requires:   boost-devel
-Provides:   tpk-manifest-handlers
 
 %description devel
 This package contains necessaary files for manifest-parser development
