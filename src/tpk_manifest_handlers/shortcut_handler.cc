@@ -23,7 +23,7 @@ const char kShortcutLabelTextKey[] = "#text";
 const char kShortcutLabelLangKey[] = "@lang";
 
 bool ParseShortcutLabel(const parser::DictionaryValue* dict,
-                        std::string* error,
+                        std::string* /*error*/,
                         std::pair<std::string, std::string>* label) {
   std::string lang;
   dict->GetString(kShortcutLabelLangKey, &lang);
