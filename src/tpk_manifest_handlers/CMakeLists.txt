@@ -5,6 +5,7 @@ SET(SRCS
   author_handler.cc
   common/application_handler.cc
   description_handler.cc
+  feature_handler.cc
   package_handler.cc
   privileges_handler.cc
   profile_handler.cc

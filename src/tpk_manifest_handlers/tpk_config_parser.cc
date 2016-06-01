@@ -16,6 +16,7 @@
 #include "tpk_manifest_handlers/application_manifest_constants.h"
 #include "tpk_manifest_handlers/author_handler.h"
 #include "tpk_manifest_handlers/description_handler.h"
+#include "tpk_manifest_handlers/feature_handler.h"
 #include "tpk_manifest_handlers/package_handler.h"
 #include "tpk_manifest_handlers/privileges_handler.h"
 #include "tpk_manifest_handlers/profile_handler.h"
@@ -48,7 +49,8 @@ TPKConfigParser::TPKConfigParser() {
     std::make_shared<WatchApplicationHandler>(),
     std::make_shared<ServiceApplicationHandler>(),
     std::make_shared<UIApplicationHandler>(),
-    std::make_shared<ShortcutHandler>()
+    std::make_shared<ShortcutHandler>(),
+    std::make_shared<FeatureHandler>()
   };
 
   std::unique_ptr<parser::ManifestHandlerRegistry> registry(
