@@ -6,7 +6,7 @@
 #define TPK_MANIFEST_HANDLERS_FEATURE_HANDLER_H_
 
 #include <string>
-#include <vector>
+#include <map>
 
 #include "manifest_parser/manifest_handler.h"
 
@@ -17,16 +17,16 @@ class FeatureInfo : public parser::ManifestData {
  public:
   static std::string Key();
 
-  const std::vector<std::string>& features() const {
+  const std::map<std::string, std::string>& features() const {
     return features_;
   }
 
-  void Add(const std::string& feature) {
-    features_.push_back(feature);
+  void Add(const std::string& feature, const std::string& value) {
+    features_.insert({feature, value});
   }
 
  private:
-  std::vector<std::string> features_;
+  std::map<std::string, std::string> features_;
 };
 
 /**
