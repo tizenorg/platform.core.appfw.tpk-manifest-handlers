@@ -31,8 +31,7 @@ bool FeatureHandler::Parse(
     if (feature_dict->GetString(kFeatureName, &name)) {
       std::string text;
       feature_dict->GetString(kFeatureText, &text);
-      if (text.empty() || text == kFeatureRequirementText)
-        data->Add(name);
+      data->Add(name, text);
     }
   }
   *output = std::static_pointer_cast<parser::ManifestData>(data);
