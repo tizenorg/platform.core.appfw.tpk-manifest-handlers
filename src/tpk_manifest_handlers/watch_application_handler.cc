@@ -23,9 +23,7 @@ namespace {
 // watch-application
 const char kWatchApplicationAppIDKey[] = "@appid";
 const char kWatchApplicationExecKey[] = "@exec";
-const char kWatchApplicationLabelKey[] = "label";
 const char kWatchApplicationTypeKey[] = "@type";
-const char kWatchApplicationIconKey[] = "icon";
 const char kWatchApplicationAmbientSupport[] = "@ambient-support";
 const char kWatchApplicationKey[] = "manifest.watch-application";
 
@@ -74,6 +72,10 @@ bool InitializeParsing(const parser::DictionaryValue& app_dict,
   if (!InitializeParsingElement(app_dict, tpk_app_keys::kIconKey,
                                 parsingFunc, widgetapplicationinfo, error))
     return false;
+  parsingFunc = ParseLabel<WatchApplicationSingleEntry>;
+  if (!InitializeParsingElement(app_dict, tpk_app_keys::kLabelKey,
+                                parsingFunc, widgetapplicationinfo, error))
+    return false;
   parsingFunc = ParseAppImage<WatchApplicationSingleEntry>;
   if (!InitializeParsingElement(app_dict, tpk_app_keys::kImageKey,
                                 parsingFunc, widgetapplicationinfo, error))
@@ -110,14 +112,6 @@ bool ParseWatchApplication(
   if (app_dict.GetString(kWatchApplicationAmbientSupport, &ambient_support))
     watch_app_info->app_info.set_ambient_support(ambient_support);
 
-  std::string icon;
-  if (app_dict.GetString(kWatchApplicationIconKey, &icon))
-    watch_app_info->app_info.set_icon(icon);
-
-  std::string label;
-  if (app_dict.GetString(kWatchApplicationLabelKey, &label))
-    watch_app_info->app_info.set_label(label);
-
   std::string type;
   if (app_dict.GetString(kWatchApplicationTypeKey, &type))
     watch_app_info->app_info.set_type(type);
@@ -126,7 +120,7 @@ bool ParseWatchApplication(
 }
 
 WatchApplicationInfo::WatchApplicationInfo()
-    : type_(""), ambient_support_(kFalse), icon_(""), label_("") {
+    : type_(""), ambient_support_(kFalse) {
 }
 
 bool WatchApplicationHandler::Parse(

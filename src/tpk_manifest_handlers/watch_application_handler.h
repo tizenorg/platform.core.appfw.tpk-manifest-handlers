@@ -36,22 +36,6 @@ class WatchApplicationInfo : public ApplicationInfo {
   }
 
   /**
-   * @brief Watch application icon image.
-   * @return icon string
-   */
-  const std::string& icon() const {
-    return icon_;
-  }
-
-  /**
-   * @brief Watch application text.
-   * @return label string
-   */
-  const std::string& label() const {
-    return label_;
-  }
-
-  /**
    * @brief Watch application type.
    * @return type string
    */
@@ -63,13 +47,6 @@ class WatchApplicationInfo : public ApplicationInfo {
     ambient_support_ = std::move(ambient_support);
   }
 
-  void set_icon(std::string icon) {
-    icon_ = std::move(icon);
-  }
-
-  void set_label(std::string label) {
-    label_ = std::move(label);
-  }
   void set_type(std::string type) {
     type_ = std::move(type);
   }
@@ -77,8 +54,6 @@ class WatchApplicationInfo : public ApplicationInfo {
  private:
   std::string type_;
   std::string ambient_support_;
-  std::string icon_;
-  std::string label_;
 };
 
 struct WatchApplicationSingleEntry :
